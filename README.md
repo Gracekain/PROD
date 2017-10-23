@@ -6,7 +6,7 @@ tanto dos clientes quanto dos exemplares presentes na franquia, no que diz respe
 literário, autor(a), lançamento, editora, edição, etc. 
 Além de negociar CDs e DVDs variados, cada um com suas informações quanto ao gênero, nome, lançamento, etc.
 O sistema escolhido para implementar é o netbeans java system.
-O sistema de Banco de dados será o phpmyadmin.
+O sistema de gerenciador de Banco de dados será o phpmyadmin.
 
 Referência bibliográfica:
 https://netbeans.org/community/releases/82/relnotes.html <acessado 23/10/2017>
