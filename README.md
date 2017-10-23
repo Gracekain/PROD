@@ -9,5 +9,5 @@ O sistema escolhido para implementar é o netbeans java system.
 O sistema de Banco de dados será o phpmyadmin.
 
 Referência bibliográfica:
-https://netbeans.org/community/releases/82/relnotes.htm l <acessado 23/10/2017>
+https://netbeans.org/community/releases/82/relnotes.html <acessado 23/10/2017>
 https://netbeans.org/features/index_pt_BR.html <acessado 23/10/2017>
