@@ -43,7 +43,7 @@ public class SenhaPerdida extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 153)), "Recuperar Senha", 0, 0, new java.awt.Font("Tahoma", 0, 24), new java.awt.Color(255, 0, 51))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 153)), "Recuperar Senha", 0, 0, new java.awt.Font("Tahoma", 0, 24), new java.awt.Color(255, 0, 102))); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Resposta");
