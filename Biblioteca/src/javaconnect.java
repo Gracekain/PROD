@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Administrador
+ * @author Heliton
  */
 
 public class javaconnect {
