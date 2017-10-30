@@ -1,4 +1,5 @@
 
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 /*
@@ -9,15 +10,46 @@ import javax.swing.UIManager;
 
 /**
  *
- * @author Administrador
+ * @author Jainy Matos
  */
-public class BarraDeProgresso extends javax.swing.JFrame {
-
+public class BarraDeProgresso extends javax.swing.JFrame implements Runnable{
+Connecton con;
+int s=0;
+Thread th;
+   
     /**
      * Creates new form BarraDeProgresso
      */
     public BarraDeProgresso() {
+        //initComponents();
+        super("BarraDeProgresso");
         initComponents();
+        th = new Thread((Runnable)this);
+    }
+    
+    public void setUpBarraDeProgresso(){
+        setVisible(false);
+        th.start();
+    }
+    
+    public void run(){
+        try{
+            for(int i=1;i<=200;i++)
+            s=s+1;
+            int m = jProgressBar1.getMaximum();
+            int v = jProgressBar1.getValue();
+            if(v<m){
+                jProgressBar1.setValue(jProgressBar1.getValue()+1);
+                
+            }else{
+                i = 201;
+                setVisible(false);
+                Home ob=new Home();
+                ob.setVisible(true);
+            }Thread.sleep(50);              //ob.setBarraDeProgresso();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
     }
 
     /**
@@ -44,8 +76,6 @@ public class BarraDeProgresso extends javax.swing.JFrame {
         jLabel1.setText("#Biblioteca 1.1");
 
         jProgressBar1.setStringPainted(true);
-
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Administrador\\Desktop\\Gato.gif")); // NOI18N
 
         jLabel2.setText("Aguarde...");
 
@@ -99,7 +129,7 @@ public class BarraDeProgresso extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        pack();
+        setBounds(0, 0, 298, 244);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
