@@ -42,9 +42,9 @@ Thread th;
                 jProgressBar1.setValue(jProgressBar1.getValue()+1);
                 
             }else{
-                i = 201;
+                int i = 201;
                 setVisible(false);
-                Home ob=new Home();
+                Principal ob=new Principal();
                 ob.setVisible(true);
             }Thread.sleep(50);              //ob.setBarraDeProgresso();
         }catch(Exception e){
