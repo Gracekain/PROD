@@ -45,7 +45,7 @@ public class Singup extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        jButtonCriar = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -72,10 +72,10 @@ public class Singup extends javax.swing.JFrame {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Qual cidade sua mãe nasceu?", "Qual o nome do seu primeiro cachorro?", "Qual sua banda favorita?", "Qual o nome da sua primeira escola?" }));
 
-        jButton1.setText("Criar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCriar.setText("Criar");
+        jButtonCriar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonCriarActionPerformed(evt);
             }
         });
 
@@ -100,7 +100,7 @@ public class Singup extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
                     .addComponent(jLabel4)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonCriar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -137,7 +137,7 @@ public class Singup extends javax.swing.JFrame {
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(jButtonCriar)
                     .addComponent(jButton2))
                 .addContainerGap())
         );
@@ -162,10 +162,10 @@ public class Singup extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonCriarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCriarActionPerformed
         // TODO add your handling code here:
         try{
-	String sql = "Insert into Account(Username, Name, Passeword, Seq_q, Answer) values(?,?,?,?,?)";
+            String sql = "Insert into Account(Username, Name, Passeword, Seq_q, Answer) values(?,?,?,?,?)";
             pst=conn.prepareStatement(sql);
             pst.setString(1, jTextField1.getText());
             pst.setString(2, jTextField2.getText());
@@ -173,13 +173,11 @@ public class Singup extends javax.swing.JFrame {
 	    pst.setString(4, (String)jComboBox1.getSelectedItem());
 	    pst.setString(5, jTextField4.getText());
 	    pst.execute();
-		JOptionPane.showMessageDialog(null, "New Account Created");
-		rs.close();
-		pst.close();
+            JOptionPane.showMessageDialog(null, "New Account Created");
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
-}
-    }//GEN-LAST:event_jButton1ActionPerformed
+        }
+    }//GEN-LAST:event_jButtonCriarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -224,8 +222,8 @@ public class Singup extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButtonCriar;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
