@@ -165,7 +165,7 @@ public class Singup extends javax.swing.JFrame {
     private void jButtonCriarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCriarActionPerformed
         // TODO add your handling code here:
         try{
-            String sql = "Insert into Account(Username, Name, Passeword, Seq_q, Answer) values(?,?,?,?,?)";
+            String sql = "Insert into Account(Username, Name, Passeword, Sec_q, Answer) values(?,?,?,?,?)";
             pst=conn.prepareStatement(sql);
             pst.setString(1, jTextField1.getText());
             pst.setString(2, jTextField2.getText());
