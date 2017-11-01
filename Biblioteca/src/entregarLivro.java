@@ -1,3 +1,9 @@
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,12 +15,17 @@
  * @author Administrador
  */
 public class entregarLivro extends javax.swing.JFrame {
+    Connection conn;
+    ResultSet rs;
+    PreparedStatement pst;
 
     /**
      * Creates new form entregarLivro
      */
     public entregarLivro() {
+        super("Entregar livro");
         initComponents();
+        conn=javaconnect.ConnecrDb();
     }
 
     /**
@@ -63,7 +74,7 @@ public class entregarLivro extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Painel de Retorno", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 24), new java.awt.Color(255, 51, 102))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Painel de Retorno", 0, 0, new java.awt.Font("Tahoma", 0, 24), new java.awt.Color(255, 51, 102))); // NOI18N
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel13.setText("Paginas:");
@@ -108,6 +119,11 @@ public class entregarLivro extends javax.swing.JFrame {
         jLabel11.setText("Publicação:");
 
         jButton3.setText("Pesquisar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -248,6 +264,59 @@ public class entregarLivro extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(691, 463));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+            String sql = "select * from Issue where Student_id=?";
+        try{
+            pst=conn.prepareStatement(sql);
+            pst.setString(1, jTextField1.getText());
+            rs = pst.executeQuery();
+            if(rs.next()){
+                String add1 = rs.getString("SNome");
+                jTextField2.setText(add1);
+                String add2 = rs.getString("FName");
+                jTextField3.setText(add2);
+                String add3 = rs.getString("Course");
+                jTextField4.setText(add3);
+                String add4 = rs.getString("Branch");
+                jTextField5.setText(add4);
+                String add5 = rs.getString("Year");
+                jTextField6.setText(add5);
+                String add6 = rs.getString("Semester");
+                jTextField7.setText(add6);
+                String add7 = rs.getString("Book_Id");
+                jTextField8.setText(add7);
+                String add8 = rs.getString("Name");
+                jTextField9.setText(add8);
+                String add9 = rs.getString("Edition");
+                jTextField10.setText(add9);
+                String add10 = rs.getString("Publisher");
+                jTextField11.setText(add10);
+                String add11 = rs.getString("Price");
+                jTextField12.setText(add11);
+                String add12 = rs.getString("Pages");
+                jTextField13.setText(add12);
+                String add13 = rs.getString("DateOfIssue");
+                jTextField14.setText(add13);
+
+                rs.close();
+                pst.close();
+            } else {
+                JOptionPane.showMessageDialog(null, "Livro não compativel com esse Estudante ID");
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }finally{
+            try{
+            rs.close();
+            pst.close();
+            }catch(Exception e){
+                
+            }
+        }
+
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
