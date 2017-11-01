@@ -1,4 +1,9 @@
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Random;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 /*
@@ -12,12 +17,22 @@ import javax.swing.UIManager;
  * @author Administrador
  */
 public class NovoLivro extends javax.swing.JFrame {
-
+    Connection conn;
+    ResultSet rs;
+    PreparedStatement pat;
     /**
      * Creates new form NovoLivro
      */
     public NovoLivro() {
+        super("New Book");
         initComponents();
+        conn=javaconnect.ConnecrDb();
+        Random();
+    }
+    
+    public void Random(){
+        Random rd= new Random();
+        jTextField1.setText(""+rd.nextInt(1000+1));
     }
 
     /**
@@ -65,6 +80,11 @@ public class NovoLivro extends javax.swing.JFrame {
         jLabel5.setText("Editor");
 
         jButton1.setText("Adicionar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Nome");
@@ -164,6 +184,24 @@ public class NovoLivro extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String sql = "insert into Book(Book_ID,Name,Edition,Publisher,Price,Pages) values (?,?,?,?,?,?)";
+        try{
+        pat = conn.prepareStatement(sql);
+        pat.setString(1, jTextField1.getText());
+        pat.setString(2, jTextField1.getText());
+        pat.setString(3, (String) jComboBox1.getSelectedItem());
+        pat.setString(4, jTextField1.getText());
+        pat.setString(5, jTextField1.getText());
+        pat.setString(6, jTextField1.getText());
+        pat.execute();
+        JOptionPane.showMessageDialog(null, "New Book Added");
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
