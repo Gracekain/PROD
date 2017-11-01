@@ -3,6 +3,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -27,6 +28,42 @@ public class entregarLivro extends javax.swing.JFrame {
         initComponents();
         conn=javaconnect.ConnecrDb();
     }
+    public void Delete (){
+	String sql="delete from IssueB where Student_Id=?";
+	try{
+		pst = conn.prepareStatement(sql);
+		pst.setString(1, jTextField1.getText());
+		pst.execute();		
+	}catch(Exception e){
+		JOptionPane.showMessageDialog(null, e);
+            }
+    }
+    
+    public void ReturnUpdate(){
+	String sql = "insert into Return(Student_ID,name,FName,Course,Branch,Year,Semester,Book_ID,BName,Edition,Publiser,Price,Pages,DOI,DOR) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	try{
+		pst = conn.prepareStatement(sql);
+		pst.setString(1, jTextField1.getText());
+		pst.setString(2, jTextField2.getText());
+		pst.setString(3, jTextField3.getText());
+		pst.setString(4, jTextField4.getText());
+		pst.setString(5, jTextField5.getText());
+		pst.setString(6, jTextField6.getText());
+		pst.setString(7, jTextField7.getText());
+		pst.setString(8, jTextField8.getText());
+		pst.setString(9, jTextField9.getText());
+		pst.setString(10, jTextField10.getText());
+		pst.setString(11, jTextField11.getText());
+		pst.setString(12, jTextField12.getText());
+		pst.setString(13, jTextField13.getText());
+		pst.setString(14, jTextField14.getText());
+		pst.setString(15, ((JTextField)jDateChooser2.getDateEditor().getUiComponent()).getText());
+		pst.execute();
+		JOptionPane.showMessageDialog(null, "Book Returned");
+	}catch(Exception e){
+		JOptionPane.showMessageDialog(null, e);
+	}
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -74,7 +111,7 @@ public class entregarLivro extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Painel de Retorno", 0, 0, new java.awt.Font("Tahoma", 0, 24), new java.awt.Color(255, 51, 102))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Painel de Retorno", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 24), new java.awt.Color(255, 51, 102))); // NOI18N
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel13.setText("Paginas:");
@@ -222,8 +259,18 @@ public class entregarLivro extends javax.swing.JFrame {
         jLabel15.setText("Data de Retorno");
 
         jButton1.setText("Retorno");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Voltar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -317,6 +364,19 @@ public class entregarLivro extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+	Principal ob=new Principal();
+	ob.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Delete();
+	ReturnUpdate();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
