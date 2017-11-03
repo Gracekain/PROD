@@ -1,5 +1,10 @@
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import net.proteanit.sql.DbUtils;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -12,14 +17,41 @@ import javax.swing.UIManager;
  * @author Administrador
  */
 public class Estatísticas extends javax.swing.JFrame {
-
+    Connection conn;
+    ResultSet rs;
+    PreparedStatement pat;
     /**
      * Creates new form Estatísticas
      */
     public Estatísticas() {
+        super("Estatísticas");
         initComponents();
+        conn=javaconnect.ConnecrDb();
+        jTable1();
+        jTable2();
     }
-
+    
+    public void jTable1(){
+	try{
+            String sql = "select Book_ID,Name,Edition,Publisher,Price,Pages from IssueB";
+            pat = conn.prepareStatement(sql);
+            rs = pat.executeQuery();
+            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+	}catch(Exception e){
+            JOptionPane.showMessageDialog(null,e);
+	}
+    }
+    
+    public void jTable2(){
+	try{
+            String sql = "select Student_ID,Name,FName,Course, Branch,Year from Return";
+            pat = conn.prepareStatement(sql);
+            rs = pat.executeQuery();
+            jTable2.setModel(DbUtils.resultSetToTableModel(rs));
+	}catch(Exception e){
+            JOptionPane.showMessageDialog(null,e);
+	}
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
