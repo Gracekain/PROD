@@ -95,6 +95,13 @@ public class NovoLivro extends javax.swing.JFrame {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8" }));
 
         jButton2.setText("Voltar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jTextField1.setEditable(false);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Páginas");
@@ -191,17 +198,24 @@ public class NovoLivro extends javax.swing.JFrame {
         try{
         pat = conn.prepareStatement(sql);
         pat.setString(1, jTextField1.getText());
-        pat.setString(2, jTextField1.getText());
+        pat.setString(2, jTextField2.getText());
         pat.setString(3, (String) jComboBox1.getSelectedItem());
-        pat.setString(4, jTextField1.getText());
-        pat.setString(5, jTextField1.getText());
-        pat.setString(6, jTextField1.getText());
+        pat.setString(4, jTextField3.getText());
+        pat.setString(5, jTextField4.getText());
+        pat.setString(6, jTextField5.getText());
         pat.execute();
         JOptionPane.showMessageDialog(null, "New Book Added");
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        Principal ob = new Principal();
+        ob.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
