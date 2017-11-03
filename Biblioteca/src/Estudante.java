@@ -1,4 +1,9 @@
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Random;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 /*
@@ -12,14 +17,23 @@ import javax.swing.UIManager;
  * @author Administrador
  */
 public class Estudante extends javax.swing.JFrame {
-
+    Connection conn;
+    ResultSet rs;
+    PreparedStatement pat;
     /**
      * Creates new form Estudante
      */
     public Estudante() {
+        super("New Student");
         initComponents();
+        conn=javaconnect.ConnecrDb();
+        Random();
     }
-
+     public void Random(){
+        Random rd= new Random();
+        jTextField1.setText(""+rd.nextInt(1000+1));
+    }
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -66,6 +80,11 @@ public class Estudante extends javax.swing.JFrame {
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8" }));
 
         jButton1.setText("Registrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Nome");
@@ -74,6 +93,11 @@ public class Estudante extends javax.swing.JFrame {
         jLabel6.setText("Ano");
 
         jButton2.setText("Voltar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Pai Nome");
@@ -175,6 +199,32 @@ public class Estudante extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        Principal ob = new Principal();
+        ob.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String sql = "insert into Student(Student_ID, Name, Father, Course, Branch, Year, Semester) values (?,?,?,?,?,?,?)";
+        try{
+        pat = conn.prepareStatement(sql);
+        pat.setString(1, jTextField1.getText());
+        pat.setString(2, jTextField2.getText());
+        pat.setString(3, jTextField3.getText());
+        pat.setString(4, (String) jComboBox1.getSelectedItem());
+        pat.setString(5, jTextField4.getText());
+        pat.setString(6, (String) jComboBox2.getSelectedItem());
+        pat.setString(7, (String) jComboBox3.getSelectedItem());
+        pat.execute();
+        JOptionPane.showMessageDialog(null, "New Student Registered");
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
