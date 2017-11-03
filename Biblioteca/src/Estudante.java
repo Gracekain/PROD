@@ -20,6 +20,7 @@ public class Estudante extends javax.swing.JFrame {
     Connection conn;
     ResultSet rs;
     PreparedStatement pat;
+    //pra fechar
     /**
      * Creates new form Estudante
      */
