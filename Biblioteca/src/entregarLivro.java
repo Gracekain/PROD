@@ -29,7 +29,7 @@ public class entregarLivro extends javax.swing.JFrame {
         conn=javaconnect.ConnecrDb();
     }
     public void Delete (){
-	String sql="delete from IssueB where Student_Id=?";
+	String sql="delete from Issue where Student_Id=?";
 	try{
 		pst = conn.prepareStatement(sql);
 		pst.setString(1, jTextField1.getText());
@@ -40,7 +40,7 @@ public class entregarLivro extends javax.swing.JFrame {
     }
     
     public void ReturnUpdate(){
-	String sql = "insert into Return(Student_ID,name,FName,Course,Branch,Year,Semester,Book_ID,BName,Edition,Publiser,Price,Pages,DOI,DOR) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	String sql = "insert into Return(Student_ID,Name,FName,Course,Branch,Year,Semester,Book_ID,BName,Edition,Publiser,Price,Pages,DOI,DOR) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 	try{
 		pst = conn.prepareStatement(sql);
 		pst.setString(1, jTextField1.getText());
@@ -59,7 +59,7 @@ public class entregarLivro extends javax.swing.JFrame {
 		pst.setString(14, jTextField14.getText());
 		pst.setString(15, ((JTextField)jDateChooser2.getDateEditor().getUiComponent()).getText());
 		pst.execute();
-		JOptionPane.showMessageDialog(null, "Book Returned");
+		JOptionPane.showMessageDialog(null, "Livro Retornado");
 	}catch(Exception e){
 		JOptionPane.showMessageDialog(null, e);
 	}
