@@ -77,7 +77,7 @@ public class PegarLivro extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 51)), " Detalhes do livro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 24), new java.awt.Color(0, 153, 153))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 51)), " Detalhes do livro", 0, 0, new java.awt.Font("Tahoma", 0, 24), new java.awt.Color(0, 153, 153))); // NOI18N
 
         jButton3.setText("Pesquisar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -199,9 +199,14 @@ public class PegarLivro extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0)), "Descrição do aluno", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 24))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0)), "Descrição do aluno", 0, 0, new java.awt.Font("Tahoma", 0, 24))); // NOI18N
 
         jButton1.setText("Pesquisar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel11.setText("Ramo");
 
@@ -309,6 +314,11 @@ public class PegarLivro extends javax.swing.JFrame {
         );
 
         jButton2.setText("Emissão");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Voltar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -400,6 +410,65 @@ try{
 
 
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String sql="select * from Student where Student_ID=?";
+        try{
+            pst=conn.prepareStatement(sql);
+            pst.setString(1, jTextField6.getText());
+            rs=pst.executeQuery();
+            if(rs.next()){
+                String add1=rs.getString("Name");
+                jTextField7.setText(add1);
+                String add2=rs.getString("Father");
+                jTextField8.setText(add2);
+                String add3=rs.getString("Course");
+                jTextField9.setText(add3);
+                String add4=rs.getString("Branch");
+                jTextField10.setText(add4);
+                String add5=rs.getString("Year");
+                jTextField11.setText(add5);
+                String add6=rs.getString("Semester");
+                jTextField12.setText(add6);
+                rs.close();
+                pst.close();
+            } else {
+                JOptionPane.showMessageDialog(null, "Student Id Not Found");
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        } finally {
+            try{
+                rs.close();
+                pst.close();
+            }catch(Exception e){
+
+            }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    String sql="insert into Issue(Book_ID,Name,Edition,Publisher,Price,Pages,Student_id,SName,FName,Course,Branch,Year,Semester) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        try{
+            pst=conn.prepareStatement(sql);
+            pst.setString(1, jTextField1.getText());
+            pst.setString(2, jTextField1.getText());
+            pst.setString(3, jTextField1.getText());
+            pst.setString(4, jTextField1.getText());
+            pst.setString(5, jTextField1.getText());
+            pst.setString(6, jTextField1.getText());
+            pst.setString(7, jTextField1.getText());
+            pst.setString(8, jTextField1.getText());
+            pst.setString(9, jTextField1.getText());
+            pst.setString(10, jTextField1.getText());
+            pst.setString(11, jTextField1.getText());
+            pst.setString(12, jTextField1.getText());
+            pst.setString(13, jTextField1.getText());
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

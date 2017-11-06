@@ -129,6 +129,12 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         jLabel1.setText("Sobre Autor");
 
         jLabel2.setText("Retornar Livro");
@@ -264,6 +270,12 @@ public class Principal extends javax.swing.JFrame {
         Estatísticas ob = new Estatísticas();
         ob.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    setVisible(false);
+    PegarLivro ob=new PegarLivro();
+    ob.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
