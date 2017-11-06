@@ -33,7 +33,7 @@ public class Estatísticas extends javax.swing.JFrame {
     
     public void jTable1(){
 	try{
-            String sql = "select Book_ID,Name,Edition,Publisher,Price,Pages from IssueB";
+            String sql = "select Book_ID,Name,Edition,Publisher,Price,Pages from Issue";
             pat = conn.prepareStatement(sql);
             rs = pat.executeQuery();
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
