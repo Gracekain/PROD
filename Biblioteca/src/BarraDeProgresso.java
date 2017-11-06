@@ -13,7 +13,7 @@ import javax.swing.UIManager;
  * @author Jainy Matos
  */
 public class BarraDeProgresso extends javax.swing.JFrame implements Runnable{
-Connecton con;
+Connecton conn;
 int s=0;
 Thread th;
    
@@ -129,7 +129,8 @@ Thread th;
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        setBounds(0, 0, 298, 244);
+        setSize(new java.awt.Dimension(298, 244));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**

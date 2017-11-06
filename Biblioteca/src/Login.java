@@ -180,6 +180,7 @@ public class Login extends javax.swing.JFrame {
                 
                 setVisible(false);
                 BarraDeProgresso ob=new BarraDeProgresso();
+                ob.setUpBarraDeProgresso();
                 ob.setVisible(true);
             }else{
                 JOptionPane.showMessageDialog(null, "Usuário e senha incorreto");
