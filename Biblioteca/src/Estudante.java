@@ -75,6 +75,8 @@ public class Estudante extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Semestre");
 
+        jTextField1.setEditable(false);
+
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Curso");
 
