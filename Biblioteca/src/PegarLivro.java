@@ -1,4 +1,8 @@
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 /*
@@ -12,12 +16,16 @@ import javax.swing.UIManager;
  * @author Administrador
  */
 public class PegarLivro extends javax.swing.JFrame {
-
+    Connection conn;
+    ResultSet rs;
+    PreparedStatement pst;
     /**
      * Creates new form PegarLivro
      */
     public PegarLivro() {
+        super("Issue Book");
         initComponents();
+        conn=javaconnect.ConnecrDb();
     }
 
     /**
@@ -72,6 +80,11 @@ public class PegarLivro extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 51)), " Detalhes do livro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 24), new java.awt.Color(0, 153, 153))); // NOI18N
 
         jButton3.setText("Pesquisar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Preço");
@@ -347,6 +360,46 @@ public class PegarLivro extends javax.swing.JFrame {
         Principal ob = new Principal();
         ob.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        String sql="select * from book where Book_ID=?";
+try{
+	pst=conn.prepareStatement(sql);
+	pst.setString(1, jTextField1.getText());
+	rs=pst.executeQuery();
+	if(rs.next()){
+		String add1=rs.getString("Name");
+		jTextField2.setText(add1);
+		String add2=rs.getString("Edition");
+		jTextField2.setText(add2);
+		String add3=rs.getString("Publisher");
+		jTextField4.setText(add3);
+		String add4=rs.getString("Price");
+		jTextField5.setText(add4);
+		String add5=rs.getString("Pages");
+		jTextField6.setText(add5);
+		rs.close();
+		pst.close();
+        }
+            else {
+			JOptionPane.showMessageDialog(null, "Book_ID Not Found");
+                    		
+	}
+}catch(Exception e){
+	   JOptionPane.showMessageDialog(null, e);
+}finally{
+   try{
+	 rs.close();
+	 pst.close();
+	}catch(Exception e){
+	
+	}
+
+}
+
+
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
