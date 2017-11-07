@@ -3,8 +3,12 @@
 
 
 /**
- * Faz a conexão com o Banco de Dados SQLITE(database).
+ * 
  * @author Heliton
+ * 
+ * @version 1.1
+ * 
+ * Faz a conexão com o Banco de Dados SQLITE(database).
  */
 import java.sql.Connection;
 import java.sql.DriverManager;
