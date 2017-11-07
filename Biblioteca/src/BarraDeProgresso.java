@@ -27,7 +27,9 @@ Thread th;
         setVisible(false);
         th.start();
     }
-    
+    /**Determina o valor maximo e minimo na barra, fazendo-o repetir o método ate que i seja maior
+    * que 200.
+    */
     public void run(){
         try{
             for(int i=1;i<=200;i++){
