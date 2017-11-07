@@ -46,7 +46,7 @@ Thread th;
                 setVisible(false);
                 Principal ob=new Principal();
                 ob.setVisible(true);
-            }Thread.sleep(50);              //ob.setBarraDeProgresso();
+            }Thread.sleep(50);              
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
