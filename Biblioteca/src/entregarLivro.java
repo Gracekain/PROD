@@ -34,10 +34,11 @@ public class entregarLivro extends javax.swing.JFrame {
      * Deleta um dado da tabela Issue conforme o Id do estudante
      */
     public void Delete (){
-	String sql="delete from Issue where Student_Id=?";
+	String sql="delete from Issue where Book_ID=? AND Student_id=?";
 	try{
 		pst = conn.prepareStatement(sql);
-		pst.setString(1, jTextField1.getText());
+		pst.setString(1, jTextField8.getText());
+		pst.setString(2, jTextField1.getText());
 		pst.execute();		
 	}catch(Exception e){
 		JOptionPane.showMessageDialog(null, e);
