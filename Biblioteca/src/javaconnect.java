@@ -3,7 +3,7 @@
 
 
 /**
- *
+ * Faz a conexão com o Banco de Dados SQLITE(database).
  * @author Heliton
  */
 import java.sql.Connection;
