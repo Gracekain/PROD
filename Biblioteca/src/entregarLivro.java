@@ -343,8 +343,7 @@ public class entregarLivro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-            String sql = "select * from Issue where Student_id=?";
+        String sql = "select * from Issue where Student_id=?";
         try{
             pst=conn.prepareStatement(sql);
             pst.setString(1, jTextField1.getText());
@@ -396,23 +395,21 @@ public class entregarLivro extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
         setVisible(false);
 	Principal ob=new Principal();
 	ob.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
         Delete();
 	ReturnUpdate();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
-     * @param args the command line arguments
+     * @param args argumentos da linha de comando
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
+        /* Define a aparência e a sensação Nimbus */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -436,7 +433,7 @@ public class entregarLivro extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Cria e Exibe a forma */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new entregarLivro().setVisible(true);

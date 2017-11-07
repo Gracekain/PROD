@@ -196,10 +196,10 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEntrarActionPerformed
 
     /**
-     * @param args the command line arguments
+     * @param args argumentos da linha de comando
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
+        /* Define a aparência e a sensação Nimbus */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -223,7 +223,7 @@ public class Login extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Cria e Exibe a forma */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Login().setVisible(true);

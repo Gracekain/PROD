@@ -401,7 +401,6 @@ public class PegarLivro extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
         String sql="select * from book where Book_ID=?";
 try{
 	pst=conn.prepareStatement(sql);
@@ -506,10 +505,10 @@ try{
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     /**
-     * @param args the command line arguments
+     * @param args argumentos da linha de comando
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
+        /* Define a aparência e a sensação Nimbus */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -532,7 +531,7 @@ try{
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Cria e Exibe a forma */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new PegarLivro().setVisible(true);

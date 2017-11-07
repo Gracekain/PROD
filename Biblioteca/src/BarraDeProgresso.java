@@ -9,7 +9,7 @@ import javax.swing.UIManager;
  * @version 1.1
  */
 public class BarraDeProgresso extends javax.swing.JFrame implements Runnable{
-Connecton conn;
+javaconnect conn;
 int s=0;
 Thread th;
    

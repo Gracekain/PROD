@@ -164,7 +164,6 @@ public class Singup extends javax.swing.JFrame {
      * @param evt 
      */
     private void jButtonCriarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCriarActionPerformed
-        // TODO add your handling code here:
         try{
             String sql = "Insert into Account(Username, Name, Password, Sec_q, Answer) values(?,?,?,?,?)";
             pst=conn.prepareStatement(sql);
@@ -181,17 +180,16 @@ public class Singup extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCriarActionPerformed
     //Volta para a tela Login(faz conexão)
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
         setVisible(false);
         Login ob = new Login();
         ob.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
-     * @param args the command line arguments
+     * @param args argumentos da linha de comando
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
+        /* Define a aparência e a sensação Nimbus */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -214,7 +212,7 @@ public class Singup extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Cria e Exibe a forma */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Singup().setVisible(true);
