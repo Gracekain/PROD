@@ -11,6 +11,7 @@ import net.proteanit.sql.DbUtils;
  * @version 1.1
  * Abstrai os dados das tables Issue e Return do Database nas jTables
  */
+
 public class Estatísticas extends javax.swing.JFrame {
     Connection conn;
     ResultSet rs;
