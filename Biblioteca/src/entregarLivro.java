@@ -48,7 +48,7 @@ public class entregarLivro extends javax.swing.JFrame {
      * Insere os dados na tabela Return 
      */
     public void ReturnUpdate(){
-	String sql = "insert into Return(Student_ID,Name,FName,Course,Branch,Year,Semester,Book_ID,BName,Edition,Publiser,Price,Pages,DOI,DOR) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	String sql = "insert into Return(Student_ID,Name,FName,Course,Branch,Year,Semester,Book_ID,BName,Edition,Publisher,Price,Pages,DOI,DOR) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 	try{
 		pst = conn.prepareStatement(sql);
 		pst.setString(1, jTextField1.getText());
@@ -115,7 +115,7 @@ public class entregarLivro extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Painel de Retorno", 0, 0, new java.awt.Font("Tahoma", 0, 24), new java.awt.Color(255, 51, 102))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Painel de Retorno", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 24), new java.awt.Color(255, 51, 102))); // NOI18N
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel13.setText("Paginas:");
@@ -126,6 +126,8 @@ public class entregarLivro extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Ano:");
 
+        jTextField2.setEditable(false);
+
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("ID Livro:");
 
@@ -135,17 +137,35 @@ public class entregarLivro extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Nome:");
 
+        jTextField13.setEditable(false);
+
+        jTextField6.setEditable(false);
+
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Ramo:");
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel14.setText("Data de Locação:");
 
+        jTextField8.setEditable(false);
+
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setText("Preço:");
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setText("Título:");
+
+        jTextField5.setEditable(false);
+
+        jTextField10.setEditable(false);
+
+        jTextField9.setEditable(false);
+
+        jTextField14.setEditable(false);
+
+        jTextField11.setEditable(false);
+
+        jTextField3.setEditable(false);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Curso:");
@@ -156,8 +176,14 @@ public class entregarLivro extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("ID Estudante:");
 
+        jTextField4.setEditable(false);
+
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel11.setText("Publicação:");
+
+        jTextField12.setEditable(false);
+
+        jTextField7.setEditable(false);
 
         jButton3.setText("Pesquisar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -324,7 +350,7 @@ public class entregarLivro extends javax.swing.JFrame {
             pst.setString(1, jTextField1.getText());
             rs = pst.executeQuery();
             if(rs.next()){
-                String add1 = rs.getString("SNome");
+                String add1 = rs.getString("SName");
                 jTextField2.setText(add1);
                 String add2 = rs.getString("FName");
                 jTextField3.setText(add2);
