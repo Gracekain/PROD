@@ -3,6 +3,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.UIManager;
 
 /*
@@ -448,26 +449,28 @@ try{
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    String sql="insert into Issue(Book_ID,Name,Edition,Publisher,Price,Pages,Student_id,SName,FName,Course,Branch,Year,Semester) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    String sql="insert into Issue(Book_ID,Name,Edition,Publisher,Price,Pages,Student_id,SName,FName,Course,Branch,Year,Semester,DateOfIssue) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try{
             pst=conn.prepareStatement(sql);
             pst.setString(1, jTextField1.getText());
-            pst.setString(2, jTextField1.getText());
-            pst.setString(3, jTextField1.getText());
-            pst.setString(4, jTextField1.getText());
-            pst.setString(5, jTextField1.getText());
-            pst.setString(6, jTextField1.getText());
-            pst.setString(7, jTextField1.getText());
-            pst.setString(8, jTextField1.getText());
-            pst.setString(9, jTextField1.getText());
-            pst.setString(10, jTextField1.getText());
-            pst.setString(11, jTextField1.getText());
-            pst.setString(12, jTextField1.getText());
-            pst.setString(13, jTextField1.getText());
+            pst.setString(2, jTextField2.getText());
+            pst.setString(3, (String) jComboBox1.getSelectedItem());
+            pst.setString(4, jTextField3.getText());
+            pst.setString(5, jTextField4.getText());
+            pst.setString(6, jTextField5.getText());
+            pst.setString(7, jTextField6.getText());
+            pst.setString(8, jTextField7.getText());
+            pst.setString(9, jTextField8.getText());
+            pst.setString(10, jTextField9.getText());
+            pst.setString(11, jTextField10.getText());
+            pst.setString(12, jTextField11.getText());
+            pst.setString(13, jTextField12.getText());
+            pst.setString(14, ((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText());
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Book Issued");
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
-
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
