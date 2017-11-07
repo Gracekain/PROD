@@ -226,6 +226,10 @@ public class Estudante extends javax.swing.JFrame {
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jTextField4.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
