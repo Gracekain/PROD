@@ -207,7 +207,7 @@ public class NovoLivro extends javax.swing.JFrame {
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
-        jTextField1.setText("");
+        Random();
         jTextField2.setText("");
         jTextField3.setText("");
         jTextField4.setText("");
