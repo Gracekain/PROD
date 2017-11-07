@@ -34,19 +34,20 @@ Thread th;
     
     public void run(){
         try{
-            for(int i=1;i<=200;i++)
+            for(int i=1;i<=200;i++){
             s=s+1;
             int m = jProgressBar1.getMaximum();
             int v = jProgressBar1.getValue();
+            //JOptionPane.showMessageDialog(null, "m:"+m+" v:"+v);
             if(v<m){
                 jProgressBar1.setValue(jProgressBar1.getValue()+1);
                 
             }else{
-                int i = 201;
+                i = 201;
                 setVisible(false);
                 Principal ob=new Principal();
                 ob.setVisible(true);
-            }Thread.sleep(50);              
+            }Thread.sleep(50); }             
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
