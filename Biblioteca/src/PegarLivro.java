@@ -467,7 +467,7 @@ try{
             pst.setString(13, jTextField12.getText());
             pst.setString(14, ((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText());
             pst.execute();
-            JOptionPane.showMessageDialog(null, "Book Issued");
+            JOptionPane.showMessageDialog(null, "Livro emitido");
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
