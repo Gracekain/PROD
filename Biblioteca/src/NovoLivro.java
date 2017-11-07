@@ -77,7 +77,7 @@ public class NovoLivro extends javax.swing.JFrame {
         jLabel1.setText("Livro ID");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setText("Editor");
+        jLabel5.setText("Editora");
 
         jButton1.setText("Adicionar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {

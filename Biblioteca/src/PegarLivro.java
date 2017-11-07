@@ -413,9 +413,9 @@ try{
 		String add3=rs.getString("Publisher");
 		jTextField3.setText(add3);
 		String add4=rs.getString("Price");
-		jTextField5.setText(add4);
+		jTextField4.setText(add4);
 		String add5=rs.getString("Pages");
-		jTextField6.setText(add5);
+		jTextField5.setText(add5);
 		rs.close();
 		pst.close();
         }
