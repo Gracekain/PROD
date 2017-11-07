@@ -6,22 +6,19 @@ import java.util.Random;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @author Jonas
+ * @version 1.1
+ * Possibilita ao usuário adicionar livros e suas informações, estas serão armazenadas na database
  */
 
-/**
- *
- * @author Administrador
- */
 public class NovoLivro extends javax.swing.JFrame {
     Connection conn;
     ResultSet rs;
     PreparedStatement pat;
+    
     /**
-     * Creates new form NovoLivro
+     * Cria um título, inicia os componentes e faz a conexão com o database
      */
     public NovoLivro() {
         super("New Book");
@@ -30,6 +27,9 @@ public class NovoLivro extends javax.swing.JFrame {
         Random();
     }
     
+    /**
+     * Modifica o campo de texto Livro_ID com um valor numérico randômico
+     */
     public void Random(){
         Random rd= new Random();
         jTextField1.setText(""+rd.nextInt(1000+1));

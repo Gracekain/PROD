@@ -16,9 +16,10 @@ public class Estudante extends javax.swing.JFrame {
     Connection conn;
     ResultSet rs;
     PreparedStatement pat;
-    //pra fechar
+    
+
     /**
-     * Creates new form Estudante
+     * Cria um título, inicia os componentes, faz a conexão com o database e inicia o método Random()
      */
     public Estudante() {
         super("New Student");
@@ -26,6 +27,9 @@ public class Estudante extends javax.swing.JFrame {
         conn=javaconnect.ConnecrDb();
         Random();
     }
+    /**
+     * Modifica o campo de texto Estudante_ID com um valor numérico randômico
+     */
      public void Random(){
         Random rd= new Random();
         jTextField1.setText(""+rd.nextInt(1000+1));

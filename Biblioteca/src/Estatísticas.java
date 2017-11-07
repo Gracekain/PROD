@@ -16,8 +16,9 @@ public class Estatísticas extends javax.swing.JFrame {
     Connection conn;
     ResultSet rs;
     PreparedStatement pat;
+    
     /**
-     * Creates new form Estatísticas
+     * Cria um título, inicia os componentes, faz a conexão com o database e inicia os métodos de abstração de dados
      */
     public Estatísticas() {
         super("Estatísticas");
@@ -27,6 +28,9 @@ public class Estatísticas extends javax.swing.JFrame {
         jTable2();
     }
     
+    /**
+     * Seleciona determinados campos da tabela Issue no Database e os abstrai na jTable1
+     */
     public void jTable1(){
 	try{
             String sql = "select Book_ID,Name,Edition,Publisher,Price,Pages from Issue";
@@ -37,7 +41,9 @@ public class Estatísticas extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,e);
 	}
     }
-    
+    /**
+     * Seleciona determinados campos da tabela Return no Database e os abstrai na jTable2
+     */
     public void jTable2(){
 	try{
             String sql = "select Student_ID,Name,FName,Course, Branch,Year from Return";
