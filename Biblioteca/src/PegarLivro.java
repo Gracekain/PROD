@@ -13,8 +13,11 @@ import javax.swing.UIManager;
  */
 
 /**
- *
- * @author Administrador
+ * Classe Pegar livro
+ * Conectado na classe principal 
+ * Busca no banco de dados o livro conforme o ID
+ * Busca o aluno que ira pegar o livro no banco de dados conforme sua ID
+ * @Deivison S. Pereira Administrador
  */
 public class PegarLivro extends javax.swing.JFrame {
     Connection conn;
