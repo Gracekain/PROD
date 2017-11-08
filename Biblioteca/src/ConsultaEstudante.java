@@ -27,17 +27,35 @@ public class ConsultaEstudante extends javax.swing.JFrame {
     }
     
     public boolean Delete(){
-        String sql = "DELETE FROM Student WHERE Student_iID = ?";
+        String sql = "DELETE FROM Student WHERE Student_ID = ?";
         int linhaSelecionada = jTable1.getSelectedRow();
-        
+        int linha = Integer.parseInt(jTable1.getValueAt(linhaSelecionada, 0).toString());
         PreparedStatement stmt = null;
         try {
             stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, jTable1.getValueAt(linhaSelecionada, 1) );
+            stmt.setInt(1, linha );
             stmt.executeUpdate();
+            System.err.println(" excluido com sucesso: ");
             return true;
         } catch (SQLException ex) {
-            System.err.println("Erro ao excluir produto: " + ex);
+            System.err.println("Erro ao excluir: " + ex);
+            return false;
+        }
+    }
+    
+    public boolean Atualizar(){
+        String sql = "UPDATE Student SET Student_ID = ?, Name=?, Father=?, Course=?,Branch=?,";
+        int linhaSelecionada = jTable1.getSelectedRow();
+        int linha = Integer.parseInt(jTable1.getValueAt(linhaSelecionada, 0).toString());
+        PreparedStatement stmt = null;
+        try {
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, linha );
+            stmt.executeUpdate();
+            System.err.println(" excluido com sucesso: ");
+            return true;
+        } catch (SQLException ex) {
+            System.err.println("Erro ao excluir: " + ex);
             return false;
         }
     }
@@ -289,7 +307,8 @@ public class ConsultaEstudante extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
+        Delete();
+        jTable1();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
