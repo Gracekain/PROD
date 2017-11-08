@@ -2,6 +2,7 @@
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 
@@ -27,6 +28,25 @@ public class ConsultaLivro extends javax.swing.JFrame {
         initComponents();
         conn=javaconnect.ConnecrDb();
         jTable1();
+    }
+    
+    public boolean Delete(){
+        String sql = "DELETE FROM Student WHERE Book_ID = ?";
+        PreparedStatement stmt = null;
+        int linhaSelecionada = jTable1.getSelectedRow();
+
+        int resultado=Integer.parseInt(jTable1.getValueAt(linhaSelecionada, 1).toString());
+         
+        try {
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, resultado );
+            stmt.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            System.err.println("Erro ao excluir produto: " + ex);
+            return false;
+        }
+        
     }
     
     public void jTable1(){
@@ -65,6 +85,7 @@ public class ConsultaLivro extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,21 +97,43 @@ public class ConsultaLivro extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTable1KeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jButton2.setText("Deletar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
-        jButton1.setText("Alterar");
+        jButton1.setText("Atualizar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jLabel3.setText("Edition");
+        jLabel3.setText("Edição");
 
-        jLabel4.setText("Publisher");
+        jLabel4.setText("Editora");
 
-        jLabel5.setText("Price");
+        jLabel5.setText("Preço");
 
-        jLabel6.setText("Pages");
+        jLabel6.setText("Páginas");
 
-        jLabel2.setText("Name");
+        jLabel2.setText("Nome");
+
+        jLabel1.setText("jLabel1");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -119,7 +162,8 @@ public class ConsultaLivro extends javax.swing.JFrame {
                             .addComponent(jLabel6)
                             .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
+                        .addComponent(jLabel1)
+                        .addGap(114, 114, 114)
                         .addComponent(jButton1)
                         .addGap(18, 18, 18)
                         .addComponent(jButton2)))
@@ -143,7 +187,9 @@ public class ConsultaLivro extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton1)
+                        .addComponent(jLabel1))
                     .addComponent(jButton2))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -183,6 +229,61 @@ public class ConsultaLivro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTable1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyPressed
+        int linhaSelecionada = jTable1.getSelectedRow();
+        
+        if (linhaSelecionada != -1) {
+            String Nome = "";
+            String Edicao = "";
+            String Editora = "";
+            String Preco = "";
+            String Paginas = "";
+            Nome = jTable1.getValueAt(linhaSelecionada, 1).toString();
+            Edicao = jTable1.getValueAt(linhaSelecionada, 2).toString();
+            Editora = jTable1.getValueAt(linhaSelecionada, 3).toString();
+            Preco = jTable1.getValueAt(linhaSelecionada, 4).toString();
+            Paginas = jTable1.getValueAt(linhaSelecionada, 5).toString();
+
+            jTextField2.setText(Nome);
+            jTextField3.setText(Edicao);
+            jTextField4.setText(Editora);
+            jTextField5.setText(Preco);
+            jTextField6.setText(Paginas);
+        }
+    }//GEN-LAST:event_jTable1KeyPressed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        int linhaSelecionada = jTable1.getSelectedRow();
+        
+        if (linhaSelecionada != -1) {
+            String Nome = "";
+            String Edicao = "";
+            String Editora = "";
+            String Preco = "";
+            String Paginas = "";
+            Nome = jTable1.getValueAt(linhaSelecionada, 1).toString();
+            Edicao = jTable1.getValueAt(linhaSelecionada, 2).toString();
+            Editora = jTable1.getValueAt(linhaSelecionada, 3).toString();
+            Preco = jTable1.getValueAt(linhaSelecionada, 4).toString();
+            Paginas = jTable1.getValueAt(linhaSelecionada, 5).toString();
+
+            jTextField2.setText(Nome);
+            jTextField3.setText(Edicao);
+            jTextField4.setText(Editora);
+            jTextField5.setText(Preco);
+            jTextField6.setText(Paginas);
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Delete();
+        jTable1();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -221,6 +322,7 @@ public class ConsultaLivro extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
