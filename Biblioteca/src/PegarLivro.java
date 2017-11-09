@@ -401,27 +401,27 @@ public class PegarLivro extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        String sql="select * from book where Book_ID=?";
+        String sql="select * from Livro where ID_Livro=?";
 try{
 	pst=conn.prepareStatement(sql);
 	pst.setString(1, jTextField1.getText());
 	rs=pst.executeQuery();
 	if(rs.next()){
-		String add1=rs.getString("Name");
+		String add1=rs.getString("Nome");
 		jTextField2.setText(add1);
-		String add2=rs.getString("Edition");
+		String add2=rs.getString("Edição");
 		jTextField13.setText(add2);
-		String add3=rs.getString("Publisher");
+		String add3=rs.getString("Editora");
 		jTextField3.setText(add3);
-		String add4=rs.getString("Price");
+		String add4=rs.getString("Preço");
 		jTextField4.setText(add4);
-		String add5=rs.getString("Pages");
+		String add5=rs.getString("Páginas");
 		jTextField5.setText(add5);
 		rs.close();
 		pst.close();
         }
             else {
-			JOptionPane.showMessageDialog(null, "Book_ID Not Found");
+			JOptionPane.showMessageDialog(null, "ID_Livro Não Encontrado");
                     		
 	}
 }catch(Exception e){
@@ -440,28 +440,28 @@ try{
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String sql="select * from Student where Student_ID=?";
+        String sql="select * from Estudante where ID_Estudante=?";
         try{
             pst=conn.prepareStatement(sql);
             pst.setString(1, jTextField6.getText());
             rs=pst.executeQuery();
             if(rs.next()){
-                String add1=rs.getString("Name");
+                String add1=rs.getString("Nome");
                 jTextField7.setText(add1);
-                String add2=rs.getString("Father");
+                String add2=rs.getString("Nome_Pai");
                 jTextField8.setText(add2);
-                String add3=rs.getString("Course");
+                String add3=rs.getString("Curso");
                 jTextField9.setText(add3);
-                String add4=rs.getString("Branch");
+                String add4=rs.getString("Ramo");
                 jTextField10.setText(add4);
-                String add5=rs.getString("Year");
+                String add5=rs.getString("Ano");
                 jTextField11.setText(add5);
-                String add6=rs.getString("Semester");
+                String add6=rs.getString("Semestre");
                 jTextField12.setText(add6);
                 rs.close();
                 pst.close();
             } else {
-                JOptionPane.showMessageDialog(null, "Student Id Not Found");
+                JOptionPane.showMessageDialog(null, "ID_Estudante Não Encontrado");
             }
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);

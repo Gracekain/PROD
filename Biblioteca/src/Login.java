@@ -166,7 +166,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
-        String sql="select * from Account where Username=? and Password=?";
+        String sql="select * from Conta where Usuário=? and Senha=?";
         try{
             pst=conn.prepareStatement(sql);
             pst.setString(1, jTextField1.getText());

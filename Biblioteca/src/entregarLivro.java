@@ -34,7 +34,7 @@ public class entregarLivro extends javax.swing.JFrame {
      * Deleta um dado da tabela Issue conforme o Id do estudante
      */
     public void Delete (){
-	String sql="delete from Issue where Book_ID=? AND Student_id=?";
+	String sql="delete from Locação where ID_Livro=? AND ID_Estudante=?";
 	try{
 		pst = conn.prepareStatement(sql);
 		pst.setString(1, jTextField8.getText());
@@ -49,7 +49,7 @@ public class entregarLivro extends javax.swing.JFrame {
      * Insere os dados na tabela Return 
      */
     public void ReturnUpdate(){
-	String sql = "insert into Return(Student_ID,Name,FName,Course,Branch,Year,Semester,Book_ID,BName,Edition,Publisher,Price,Pages,DOI,DOR) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	String sql = "insert into Devolução(ID_Estudante,Nome,Nome_Pai,Curso,Ramo,Ano,Semestre,ID_Livro,Nome_Livro,Edição,Editora,Preço,Paginas,Data_Locação,Data_Devolução) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 	try{
 		pst = conn.prepareStatement(sql);
 		pst.setString(1, jTextField1.getText());
@@ -344,37 +344,37 @@ public class entregarLivro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        String sql = "select * from Issue where Student_id=?";
+        String sql = "select * from Locação where ID_Estudante=?";
         try{
             pst=conn.prepareStatement(sql);
             pst.setString(1, jTextField1.getText());
             rs = pst.executeQuery();
             if(rs.next()){
-                String add1 = rs.getString("SName");
+                String add1 = rs.getString("Nome_Estudante");
                 jTextField2.setText(add1);
-                String add2 = rs.getString("FName");
+                String add2 = rs.getString("Nome_Pai");
                 jTextField3.setText(add2);
-                String add3 = rs.getString("Course");
+                String add3 = rs.getString("Curso");
                 jTextField4.setText(add3);
-                String add4 = rs.getString("Branch");
+                String add4 = rs.getString("Ramo");
                 jTextField5.setText(add4);
-                String add5 = rs.getString("Year");
+                String add5 = rs.getString("Ano");
                 jTextField6.setText(add5);
-                String add6 = rs.getString("Semester");
+                String add6 = rs.getString("Semestre");
                 jTextField7.setText(add6);
-                String add7 = rs.getString("Book_Id");
+                String add7 = rs.getString("ID_Livro");
                 jTextField8.setText(add7);
-                String add8 = rs.getString("Name");
+                String add8 = rs.getString("Nome");
                 jTextField9.setText(add8);
-                String add9 = rs.getString("Edition");
+                String add9 = rs.getString("Edição");
                 jTextField10.setText(add9);
-                String add10 = rs.getString("Publisher");
+                String add10 = rs.getString("Editora");
                 jTextField11.setText(add10);
-                String add11 = rs.getString("Price");
+                String add11 = rs.getString("Preço");
                 jTextField12.setText(add11);
-                String add12 = rs.getString("Pages");
+                String add12 = rs.getString("Páginas");
                 jTextField13.setText(add12);
-                String add13 = rs.getString("DateOfIssue");
+                String add13 = rs.getString("Data_Locação");
                 jTextField14.setText(add13);
 
                 rs.close();

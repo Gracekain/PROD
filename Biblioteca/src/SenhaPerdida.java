@@ -36,7 +36,7 @@ public class SenhaPerdida extends javax.swing.JFrame {
      */
     public void Procurar() {
         String a1=jTextField1.getText();
-        String sql="select * from Account where Username='"+a1+"'";
+        String sql="select * from Conta where Usuário='"+a1+"'";
         try{
             pst=conn.prepareStatement(sql);
             rs=pst.executeQuery();
@@ -61,7 +61,7 @@ public class SenhaPerdida extends javax.swing.JFrame {
     public void Recuperar(){
         String a1=jTextField1.getText();
         String a2=jTextField4.getText();
-        String sql="select * from Account where Answer='"+a2+"'";
+        String sql="select * from Conta where Resposta='"+a2+"'";
         try{
             pst=conn.prepareStatement(sql);
             rs=pst.executeQuery();

@@ -23,7 +23,7 @@ public class Singup extends javax.swing.JFrame {
      * Cria nova forma Singup
      */
     public Singup() {
-        super("Login");
+        super("Nova Conta");
         initComponents();
         conn=javaconnect.ConnecrDb();
     }
@@ -165,7 +165,7 @@ public class Singup extends javax.swing.JFrame {
      */
     private void jButtonCriarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCriarActionPerformed
         try{
-            String sql = "Insert into Account(Username, Name, Password, Sec_q, Answer) values(?,?,?,?,?)";
+            String sql = "Insert into Conta(Usuário, Nome, Senha, Pergunta_Segurança, Resposta) values(?,?,?,?,?)";
             pst=conn.prepareStatement(sql);
             pst.setString(1, jTextField1.getText());
             pst.setString(2, jTextField2.getText());
@@ -173,7 +173,7 @@ public class Singup extends javax.swing.JFrame {
 	    pst.setString(4, (String)jComboBox1.getSelectedItem());
 	    pst.setString(5, jTextField4.getText());
 	    pst.execute();
-            JOptionPane.showMessageDialog(null, "New Account Created");
+            JOptionPane.showMessageDialog(null, "Nova Conta Criada");
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
