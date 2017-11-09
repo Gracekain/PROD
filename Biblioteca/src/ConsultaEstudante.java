@@ -51,7 +51,7 @@ public class ConsultaEstudante extends javax.swing.JFrame {
      * @return Boolean
      */
     public boolean Atualizar(){
-        String sql = "UPDATE Student SET  Name=?, Father=?, Course=?,Branch=?,Year=?,Semester=? WHERE Student_ID =?";
+        String sql = "UPDATE Estudante SET  Nome=?, Nome_Pai=?, Curso=?,Branch=?,Ano=?,Semestre=? WHERE ID_Estudante =?";
         int linhaSelecionada = jTable1.getSelectedRow();
         int linha = Integer.parseInt(jTable1.getValueAt(linhaSelecionada, 0).toString());
         int ano = Integer.parseInt(jTextField6.getText());
@@ -83,7 +83,7 @@ public class ConsultaEstudante extends javax.swing.JFrame {
      */
     public void jTable1(){
 	try{
-            String sql = "select Student_ID, Name, Father, Course, Branch, Year, Semester from Student";
+            String sql = "select ID_Estudante, Nome, Nome_Pai, Curso, Ramo, Ano, Semestre from Estudante";
             pat = conn.prepareStatement(sql);
             rs = pat.executeQuery();
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
@@ -129,7 +129,7 @@ public class ConsultaEstudante extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Alterar");
+        jButton2.setText("Atualizar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
