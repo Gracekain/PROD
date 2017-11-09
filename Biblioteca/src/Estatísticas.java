@@ -9,7 +9,7 @@ import net.proteanit.sql.DbUtils;
 /**
  * @author Jonas
  * @version 1.1
- * Abstrai os dados das tables Issue e Return do Database nas jTables
+ * Abstrai os dados das tables Locação e Devolução do Database nas jTables
  */
 
 public class Estatísticas extends javax.swing.JFrame {
