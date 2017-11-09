@@ -25,7 +25,10 @@ public class ConsultaEstudante extends javax.swing.JFrame {
         conn=javaconnect.ConnecrDb();
         jTable1();
     }
-    
+    /**
+     * Deleta a linha que o usuário selecionar.
+     * @return Boolean
+     */
     public boolean Delete(){
         String sql = "DELETE FROM Student WHERE Student_ID = ?";
         int linhaSelecionada = jTable1.getSelectedRow();
@@ -43,23 +46,41 @@ public class ConsultaEstudante extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Atualiza as informações da linha q o usuário desejar.
+     * @return Boolean
+     */
     public boolean Atualizar(){
-        String sql = "UPDATE Student SET Student_ID = ?, Name=?, Father=?, Course=?,Branch=?,";
+        String sql = "UPDATE Student SET  Name=?, Father=?, Course=?,Branch=?,Year=?,Semester=? WHERE Student_ID =?";
         int linhaSelecionada = jTable1.getSelectedRow();
         int linha = Integer.parseInt(jTable1.getValueAt(linhaSelecionada, 0).toString());
+        int ano = Integer.parseInt(jTextField6.getText());
+        int semestre = Integer.parseInt(jTextField7.getText());
+        
         PreparedStatement stmt = null;
         try {
             stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, linha );
+            
+            
+            stmt.setString(1, jTextField2.getText());
+            stmt.setString(2, jTextField3.getText());
+            stmt.setString(3, jTextField4.getText());
+            stmt.setString(4, jTextField5.getText());
+            stmt.setInt(5, ano);
+            stmt.setInt(6, semestre);
+            stmt.setInt(7, linha );
+            
             stmt.executeUpdate();
-            System.err.println(" excluido com sucesso: ");
+            System.err.println(" Atualizado com sucesso: ");
             return true;
         } catch (SQLException ex) {
-            System.err.println("Erro ao excluir: " + ex);
+            System.err.println("Erro ao Atualizar: " + ex);
             return false;
         }
     }
-    
+    /**
+     * vai pegar os dados no banco de dados e inserir na tabela da tela.
+     */
     public void jTable1(){
 	try{
             String sql = "select Student_ID, Name, Father, Course, Branch, Year, Semester from Student";
@@ -303,6 +324,8 @@ public class ConsultaEstudante extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        Atualizar();
+        jTable1();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
