@@ -476,7 +476,7 @@ try{
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    String sql="insert into Issue(Book_ID,Name,Edition,Publisher,Price,Pages,Student_id,SName,FName,Course,Branch,Year,Semester,DateOfIssue) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    String sql="insert into Locação(ID_Livro,Nome,Edição,Editora,Preço,Páginas,ID_Estudante,Nome_Estudante,Nome_Pai,Curso,Ramo,Ano,Semestre,Data_Locação) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try{
             pst=conn.prepareStatement(sql);
             pst.setString(1, jTextField1.getText());
