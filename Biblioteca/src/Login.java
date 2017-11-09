@@ -25,6 +25,7 @@ public class Login extends javax.swing.JFrame {
         super("Login");
         initComponents();
         conn=javaconnect.ConnecrDb();
+        jLabel3.setVisible(false);
     }
 
     /**
@@ -180,6 +181,7 @@ public class Login extends javax.swing.JFrame {
                 ob.setVisible(true);
             }else{
                 JOptionPane.showMessageDialog(null, "Usuário e senha incorreto");
+                jLabel3.setVisible(true);
             } 
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
