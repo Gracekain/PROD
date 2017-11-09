@@ -49,7 +49,7 @@ public class entregarLivro extends javax.swing.JFrame {
      * Insere os dados na tabela Return 
      */
     public void ReturnUpdate(){
-	String sql = "insert into Devolução(ID_Estudante,Nome,Nome_Pai,Curso,Ramo,Ano,Semestre,ID_Livro,Nome_Livro,Edição,Editora,Preço,Paginas,Data_Locação,Data_Devolução) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	String sql = "insert into Devolução(ID_Estudante,Nome,Nome_Pai,Curso,Ramo,Ano,Semestre,ID_Livro,Nome_Livro,Edição,Editora,Preço,Páginas,Data_Locação,Data_Devolução) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 	try{
 		pst = conn.prepareStatement(sql);
 		pst.setString(1, jTextField1.getText());
