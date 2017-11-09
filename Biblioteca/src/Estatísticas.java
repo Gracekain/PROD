@@ -18,7 +18,8 @@ public class Estatísticas extends javax.swing.JFrame {
     PreparedStatement pat;
     
     /**
-     * Cria um título, inicia os componentes, faz a conexão com o database e inicia os métodos de abstração de dados
+     * Cria um título, inicia os componentes, faz a conexão com o database
+     * e inicia os métodos de abstração de dados
      */
     public Estatísticas() {
         super("Estatísticas");
@@ -33,7 +34,7 @@ public class Estatísticas extends javax.swing.JFrame {
      */
     public void jTable1(){
 	try{
-            String sql = "select Book_ID,Name,Edition,Publisher,Price,Pages from Issue";
+            String sql = "select ID_Livro,Nome,Edição,Editora,Preço,Páginas from Locação";
             pat = conn.prepareStatement(sql);
             rs = pat.executeQuery();
             jTable2.setModel(DbUtils.resultSetToTableModel(rs));
@@ -47,7 +48,7 @@ public class Estatísticas extends javax.swing.JFrame {
      */
     public void jTable2(){
 	try{
-            String sql = "select Student_ID,Name,FName,Course, Branch,Year from Return";
+            String sql = "select ID_Estudante,Nome,Nome_Pai,Curso,Ramo,Ano from Devolução";
             pat = conn.prepareStatement(sql);
             rs = pat.executeQuery();
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));

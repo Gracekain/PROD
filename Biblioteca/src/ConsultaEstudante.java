@@ -38,7 +38,7 @@ public class ConsultaEstudante extends javax.swing.JFrame {
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, linha );
             stmt.executeUpdate();
-            System.err.println(" excluido com sucesso: ");
+            System.err.println("Excluído com sucesso: ");
             return true;
         } catch (SQLException ex) {
             System.err.println("Erro ao excluir: " + ex);
@@ -51,7 +51,7 @@ public class ConsultaEstudante extends javax.swing.JFrame {
      * @return Boolean
      */
     public boolean Atualizar(){
-        String sql = "UPDATE Estudante SET  Nome=?, Nome_Pai=?, Curso=?,Branch=?,Ano=?,Semestre=? WHERE ID_Estudante =?";
+        String sql = "UPDATE Estudante SET  Nome=?, Nome_Pai=?, Curso=?,Ramo=?,Ano=?,Semestre=? WHERE ID_Estudante =?";
         int linhaSelecionada = jTable1.getSelectedRow();
         int linha = Integer.parseInt(jTable1.getValueAt(linhaSelecionada, 0).toString());
         int ano = Integer.parseInt(jTextField6.getText());

@@ -37,7 +37,7 @@ public class ConsultaLivro extends javax.swing.JFrame {
      *  Deleta do Database e da jTable a linha selecionada pelo usuário
      */
     public boolean Delete(){
-        String sql = "DELETE FROM Book WHERE Book_ID = ?";
+        String sql = "DELETE FROM Livro WHERE ID_Livro = ?";
         int linhaSelecionada = jTable1.getSelectedRow();
         int linha = Integer.parseInt(jTable1.getValueAt(linhaSelecionada, 0).toString());
         PreparedStatement stmt = null;
@@ -45,7 +45,7 @@ public class ConsultaLivro extends javax.swing.JFrame {
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, linha );
             stmt.executeUpdate();
-            System.err.println(" excluido com sucesso: ");
+            System.err.println("Excluído com sucesso: ");
             return true;
         } catch (SQLException ex) {
             System.err.println("Erro ao excluir: " + ex);
@@ -57,7 +57,7 @@ public class ConsultaLivro extends javax.swing.JFrame {
      *  Atualiza no Banco e na jTable o que foi alterado pelo usuário nos jTextFields
      */
     public boolean Atualizar(){
-        String sql = "UPDATE Book SET  Name=?,Edition=?,Publisher=?,Price=?,Pages=? WHERE Book_ID=?";
+        String sql = "UPDATE Livro SET  Nome=?,Edição=?,Editora=?,Preço=?,Páginas=? WHERE ID_Livro=?";
         int linhaSelecionada = jTable1.getSelectedRow();
         int idLivro = Integer.parseInt(jTable1.getValueAt(linhaSelecionada, 0).toString());
         int edicao = Integer.parseInt(jTextField3.getText());
@@ -75,7 +75,7 @@ public class ConsultaLivro extends javax.swing.JFrame {
             stmt.setInt(5, paginas);
             stmt.setInt(6, idLivro);
             stmt.executeUpdate();
-            System.err.println(" Atualizado com sucesso: ");
+            System.err.println("Atualizado com sucesso: ");
             return true;
         } catch (SQLException ex) {
             System.err.println("Erro ao Atualizar: " + ex);
@@ -85,7 +85,7 @@ public class ConsultaLivro extends javax.swing.JFrame {
     
     public void jTable1(){
 	try{
-            String sql = "select Book_ID, Name, Edition, Publisher, Price, Pages  from Book";
+            String sql = "select ID_Livro, Nome, Edição, Editora, Preço, Páginas from Livro";
             pat = conn.prepareStatement(sql);
             rs = pat.executeQuery();
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
