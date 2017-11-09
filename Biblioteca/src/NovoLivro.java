@@ -21,7 +21,7 @@ public class NovoLivro extends javax.swing.JFrame {
      * Cria um título, inicia os componentes e faz a conexão com o database
      */
     public NovoLivro() {
-        super("New Book");
+        super("Novo Livro");
         initComponents();
         conn=javaconnect.ConnecrDb();
         Random();
@@ -193,7 +193,7 @@ public class NovoLivro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String sql = "insert into Book(Book_ID,Name,Edition,Publisher,Price,Pages) values (?,?,?,?,?,?)";
+        String sql = "insert into Livro(ID_Livro,Nome,Edição,Editora,Preço,Páginas) values (?,?,?,?,?,?)";
         try{
         pat = conn.prepareStatement(sql);
         pat.setString(1, jTextField1.getText());
@@ -203,7 +203,7 @@ public class NovoLivro extends javax.swing.JFrame {
         pat.setString(5, jTextField4.getText());
         pat.setString(6, jTextField5.getText());
         pat.execute();
-        JOptionPane.showMessageDialog(null, "New Book Added");
+        JOptionPane.showMessageDialog(null, "Novo Livro Adicionado");
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }

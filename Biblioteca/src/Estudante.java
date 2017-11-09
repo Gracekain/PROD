@@ -22,7 +22,7 @@ public class Estudante extends javax.swing.JFrame {
      * Cria um título, inicia os componentes, faz a conexão com o database e inicia o método Random()
      */
     public Estudante() {
-        super("New Student");
+        super("Novo Estudante");
         initComponents();
         conn=javaconnect.ConnecrDb();
         Random();
@@ -211,7 +211,7 @@ public class Estudante extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String sql = "insert into Student(Student_ID, Name, Father, Course, Branch, Year, Semester) values (?,?,?,?,?,?,?)";
+        String sql = "insert into Estudante(ID_Estudante,Nome,Nome_Pai,Curso,Ramo,Ano,Semestre) values (?,?,?,?,?,?,?)";
         try{
         pat = conn.prepareStatement(sql);
         pat.setString(1, jTextField1.getText());
@@ -222,7 +222,7 @@ public class Estudante extends javax.swing.JFrame {
         pat.setString(6, (String) jComboBox2.getSelectedItem());
         pat.setString(7, (String) jComboBox3.getSelectedItem());
         pat.execute();
-        JOptionPane.showMessageDialog(null, "New Student Registered");
+        JOptionPane.showMessageDialog(null, "Novo Estudante Registrado");
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
