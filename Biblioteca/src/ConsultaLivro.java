@@ -13,13 +13,16 @@ import net.proteanit.sql.DbUtils;
  */
 
 /**
- *
- * @author Administrador
+ * @author Jonas
+ * @version 1.1
+ * Possibilita ao usuário Alterar e Deletar os dados de Livros no Database
  */
+
 public class ConsultaLivro extends javax.swing.JFrame {
     Connection conn;
     ResultSet rs;
     PreparedStatement pat;
+    
     /**
      * Cria um título, inicia os componentes, faz a conexão com o database e inicia os métodos de abstração de dados
      */
@@ -30,23 +33,54 @@ public class ConsultaLivro extends javax.swing.JFrame {
         jTable1();
     }
     
+    /**
+     *  Deleta do Database e da jTable a linha selecionada pelo usuário
+     */
     public boolean Delete(){
-        String sql = "DELETE FROM Student WHERE Book_ID = ?";
-        PreparedStatement stmt = null;
+        String sql = "DELETE FROM Book WHERE Book_ID = ?";
         int linhaSelecionada = jTable1.getSelectedRow();
-
-        int resultado=Integer.parseInt(jTable1.getValueAt(linhaSelecionada, 1).toString());
-         
+        int linha = Integer.parseInt(jTable1.getValueAt(linhaSelecionada, 0).toString());
+        PreparedStatement stmt = null;
         try {
             stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, resultado );
+            stmt.setInt(1, linha );
             stmt.executeUpdate();
+            System.err.println(" excluido com sucesso: ");
             return true;
         } catch (SQLException ex) {
-            System.err.println("Erro ao excluir produto: " + ex);
+            System.err.println("Erro ao excluir: " + ex);
             return false;
         }
+    }
+    
+    /**
+     *  Atualiza no Banco e na jTable o que foi alterado pelo usuário nos jTextFields
+     */
+    public boolean Atualizar(){
+        String sql = "UPDATE Book SET  Name=?,Edition=?,Publisher=?,Price=?,Pages=? WHERE Book_ID=?";
+        int linhaSelecionada = jTable1.getSelectedRow();
+        int idLivro = Integer.parseInt(jTable1.getValueAt(linhaSelecionada, 0).toString());
+        int edicao = Integer.parseInt(jTextField3.getText());
+        int preco = Integer.parseInt(jTextField5.getText());
+        int paginas = Integer.parseInt(jTextField6.getText());
         
+        PreparedStatement stmt = null;
+        try {
+            stmt = conn.prepareStatement(sql);
+            
+            stmt.setString(1, jTextField2.getText());
+            stmt.setInt(2, edicao);
+            stmt.setString(3, jTextField4.getText());
+            stmt.setInt(4, preco);
+            stmt.setInt(5, paginas);
+            stmt.setInt(6, idLivro);
+            stmt.executeUpdate();
+            System.err.println(" Atualizado com sucesso: ");
+            return true;
+        } catch (SQLException ex) {
+            System.err.println("Erro ao Atualizar: " + ex);
+            return false;
+        }
     }
     
     public void jTable1(){
@@ -85,7 +119,7 @@ public class ConsultaLivro extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -133,7 +167,12 @@ public class ConsultaLivro extends javax.swing.JFrame {
 
         jLabel2.setText("Nome");
 
-        jLabel1.setText("jLabel1");
+        jButton3.setText("Voltar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -160,13 +199,15 @@ public class ConsultaLivro extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(114, 114, 114)
+                        .addGap(148, 148, 148)
                         .addComponent(jButton1)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)))
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -187,10 +228,10 @@ public class ConsultaLivro extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton1)
-                        .addComponent(jLabel1))
-                    .addComponent(jButton2))
+                        .addComponent(jButton2)
+                        .addComponent(jButton3)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -276,13 +317,20 @@ public class ConsultaLivro extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        Atualizar();
+        jTable1();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Delete();
         jTable1();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        setVisible(false);
+        Principal ob = new Principal();
+        ob.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -322,7 +370,7 @@ public class ConsultaLivro extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
