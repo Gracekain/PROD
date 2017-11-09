@@ -30,7 +30,7 @@ public class ConsultaEstudante extends javax.swing.JFrame {
      * @return Boolean
      */
     public boolean Delete(){
-        String sql = "DELETE FROM Student WHERE Student_ID = ?";
+        String sql = "DELETE FROM Estudante WHERE ID_Estudante = ?";
         int linhaSelecionada = jTable1.getSelectedRow();
         int linha = Integer.parseInt(jTable1.getValueAt(linhaSelecionada, 0).toString());
         PreparedStatement stmt = null;
