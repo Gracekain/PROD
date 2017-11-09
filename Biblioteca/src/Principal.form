@@ -247,6 +247,9 @@
                           <Image iconType="2" name="C:\Users\Administrador\Documents\NetBeansProjects\PROD\Biblioteca\imagens\consultar_emprestimo.png"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton9ActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="jButton8">
                       <Properties>
@@ -254,6 +257,9 @@
                           <Image iconType="2" name="C:\Users\Administrador\Documents\NetBeansProjects\PROD\Biblioteca\imagens\consultar_livro.png"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton8ActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -278,6 +284,9 @@
                       <Image iconType="2" name="C:\Users\Administrador\Documents\NetBeansProjects\PROD\Biblioteca\imagens\consultar_aluno.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton7ActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
