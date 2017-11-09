@@ -82,7 +82,9 @@ public class ConsultaLivro extends javax.swing.JFrame {
             return false;
         }
     }
-    
+    /**
+     * Vai pegar os dados no banco de dados e inserir na tabela da tela.
+     */
     public void jTable1(){
 	try{
             String sql = "select ID_Livro, Nome, Edição, Editora, Preço, Páginas from Livro";

@@ -29,7 +29,7 @@ public class PegarLivro extends javax.swing.JFrame {
      * Cria um titulo, inicia os componetes e faz a conexão com o data base.
      */
     public PegarLivro() {
-        super("Issue Book");
+        super("Locação de Livro");
         initComponents();
         conn=javaconnect.ConnecrDb();
     }

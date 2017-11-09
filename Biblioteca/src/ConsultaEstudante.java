@@ -11,6 +11,8 @@ import net.proteanit.sql.DbUtils;
 /**
  *
  * @author Heliton
+ * @version 1.1
+ * Possibilita ao usuário Alterar e Deletar os dados de Estudantes no Database
  */
 public class ConsultaEstudante extends javax.swing.JFrame {
     Connection conn;
@@ -79,7 +81,7 @@ public class ConsultaEstudante extends javax.swing.JFrame {
         }
     }
     /**
-     * vai pegar os dados no banco de dados e inserir na tabela da tela.
+     * Vai pegar os dados no banco de dados e inserir na tabela da tela.
      */
     public void jTable1(){
 	try{

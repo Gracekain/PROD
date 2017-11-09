@@ -18,7 +18,7 @@ Thread th;
      */
     public BarraDeProgresso() {
         //initComponents();
-        super("BarraDeProgresso");
+        super("Barra De Progresso");
         initComponents();
         th = new Thread((Runnable)this);
     }
