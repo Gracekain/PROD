@@ -169,7 +169,7 @@ public class Login extends javax.swing.JFrame {
         try{
             pst=conn.prepareStatement(sql);
             pst.setString(1, jTextFieldUsuario.getText());
-            pst.setString(2, jTextFieldSenha.getPassword().toString());
+            pst.setString(2, jTextFieldSenha.getText());
             rs=pst.executeQuery();
             if(rs.next()){
                 rs.close();
